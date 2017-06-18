@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>波浪线-线材质</title>
+</head>
+
+<body>
+    <script src="three.js"></script>
+    <script>
+    //第一步：将相机放入场景
+    var scene, camera, renderer;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+    camera.position.set(3, 3, 3);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    scene.add(camera);
+
+    /**
+     * [pointsGenerator 在指定圆的半径内生成多少个线条]
+     * @param  {[type]} radius [半径多少内]
+     * @param  {[type]} num    [会有多少线条]
+     * @return {[type]}        [description]
+     */
+    function pointsGenerator(radius, num) {
+        var points = [];
+        var θ = (2 * Math.PI / 360) * (360 / num);//弧度
+        for (var i = 0; i < num; i++) {
+            var x = radius * Math.cos(θ * i);
+            var z = radius * Math.sin(θ * i);
+            var point = new THREE.Vector3(x, 0, z);//点坐标
+            points.push(point);
+        }
+        return points;
+    }
+
+
+    //第二步：将随机点放入场景
+    var lineMaterial = new THREE.LineDashedMaterial({
+        color: 'black',
+        linewidth: 1
+    });
+    var t = 0;
+    var radius = 2;//半径
+    var division = 64;//多少条线
+    var linesToRender = []; 
+    var basePoints = pointsGenerator(radius, division);
+    var dynamicPoints = pointsGenerator(radius, division);
+    for (var i = 0; i < dynamicPoints.length; i++) {
+        dynamicPoints[i].grow = true;
+    }
+
+
+    //第三步：创建渲染器【renderer就是画布元素】
+    renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    //第四步：渲染
+    function animate() {
+        t += 0.1;
+        //每一次渲染都会讲之前的渲染结果清除
+        if (linesToRender.length > 0) {
+            for (var i = 0; i < linesToRender.length; i++) {
+                scene.remove(linesToRender[i]);
+            }
+        }
+
+        linesToRender = [];
+        for (var j = 0; j < division; j++) {//64条线
+            var lineGeometry = new THREE.Geometry();
+            var unit = 8 * Math.PI / division;//4圈
+            //动态线条
+            if ((t + unit * j) / Math.PI > j) {//4圈循环
+                dynamicPoints[j].y = Math.sin(t + unit * j) / 2;
+            }
+            lineGeometry.vertices.push(basePoints[j]);
+            lineGeometry.vertices.push(dynamicPoints[j]);
+            var line = new THREE.Line(lineGeometry, lineMaterial);//创造物体
+            linesToRender.push(line);
+        }
+        //将物体添加到场景
+        for (var m = 0; m < linesToRender.length; m++) {
+            scene.add(linesToRender[m]);
+        }
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    animate();
+    </script>
+</body>
+
+</html>
