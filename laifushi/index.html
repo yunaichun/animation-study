@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>正方体拼接-包含对角线</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/calRem.js"></script>
+    <script src="js/three.js"></script>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+    //第一步：将相机放入场景
+    var scene, camera, renderer;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.x = 100; //camera.position.set(100, 400, 0);
+    camera.position.z = 400;
+    camera.position.y = 0;
+    camera.lookAt(new THREE.Vector3(0, 0, 0));//默认
+    scene.add(camera);
+
+    //第二步：添加正方体
+    var geometry = new THREE.BoxGeometry(20, 20, 20);
+    var material = new THREE.MeshBasicMaterial({
+        color: 0xFFFFFF,
+        wireframe: true
+    });
+    for(var i=0;i<10;i++){
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.y=20*i;
+        scene.add(mesh);
+    }
+
+    var geometry2 = new THREE.BoxGeometry(20, 20, 20);
+    var material2 = new THREE.MeshBasicMaterial({
+        color: 0xFFFFFF,
+        wireframe: true
+    });
+    for(var i=0;i<10;i++){
+        var mesh = new THREE.Mesh(geometry, material);
+        mesh.position.x=60;
+        mesh.position.y=20*i;
+        scene.add(mesh);
+    }
+
+    
+    var material = new THREE.LineBasicMaterial({
+        color: 0x0000ff
+    });
+    var geometry = new THREE.Geometry();
+    geometry.vertices.push(
+        new THREE.Vector3( -10, 0, 0 ),
+        new THREE.Vector3( 0, 10, 0 ),
+        new THREE.Vector3( 10, 0, 0 )
+    );
+    var line = new THREE.Line( geometry, material );
+    scene.add( line );
+    //第三步：添加渲染器
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('container').appendChild(renderer.domElement);
+
+    //第四步：渲染
+    renderer.render(scene, camera);
+    </script>
+</body>
+
+</html>

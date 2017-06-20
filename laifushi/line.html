@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>线条</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/calRem.js"></script>
+    <script src="js/three.js" type="text/JavaScript"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+    // 老三样 场景scene，相机camera，渲染器render
+    var scene = new THREE.Scene();
+    // 相机
+    var camera = new THREE.PerspectiveCamera(45, 1, 1, 1000);
+    camera.position.set(50, 100, 100);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    // 渲染器
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    //显示在窗体
+    document.body.appendChild(renderer.domElement);
+
+
+
+
+    //定义材质THREE.LineBasicMaterial . MeshBasicMaterial...都可以
+    var material = new THREE.LineBasicMaterial({
+        color: 0xFFFFFF
+    });
+    // 空几何体，里面没有点的信息,不想BoxGeometry已经有一系列点，组成方形了。
+    var geometry = new THREE.Geometry();
+    for(var i=0;i<10;i++){
+      // 给空白几何体添加点信息，这里写3个点，geometry会把这些点自动组合成线，面。
+       
+        if(i==3){
+            geometry.vertices.push(new THREE.Vector3(0, i*5, 0));
+            geometry.vertices.push(new THREE.Vector3(5, i*5, 0));
+            geometry.vertices.push(new THREE.Vector3(5, i*5, 5));
+            geometry.vertices.push(new THREE.Vector3(0,i*5, 5));
+            geometry.vertices.push(new THREE.Vector3(0,i*5, 0));
+        }else{
+            geometry.vertices.push(new THREE.Vector3(0, i*5, 0));
+            geometry.vertices.push(new THREE.Vector3(5, i*5, 0));
+            geometry.vertices.push(new THREE.Vector3(5, i*5, 5));
+            geometry.vertices.push(new THREE.Vector3(0,i*5, 5));
+            geometry.vertices.push(new THREE.Vector3(0,i*5, 0));
+        }
+        //线构造
+        var line = new THREE.Line(geometry, material);
+        // 加入到场景中
+        scene.add(line);
+    }
+    var geometry1 = new THREE.Geometry();
+    for(i=0;i<9;i++){
+        geometry1.vertices.push(new THREE.Vector3(5, i*5, 0));
+        geometry1.vertices.push(new THREE.Vector3(5, i*5+5, 0));
+        //线构造
+        var line = new THREE.Line(geometry1, material);
+        // 加入到场景中
+        scene.add(line);
+    }
+    var geometry2 = new THREE.Geometry();
+    for(i=0;i<9;i++){
+        geometry2.vertices.push(new THREE.Vector3(5, i*5, 5));
+        geometry2.vertices.push(new THREE.Vector3(5, i*5+5, 5));
+        //线构造
+        var line = new THREE.Line(geometry2, material);
+        // 加入到场景中
+        scene.add(line);
+    }
+    var geometry3 = new THREE.Geometry();
+    for(i=0;i<9;i++){
+        geometry3.vertices.push(new THREE.Vector3(0, i*5, 5));
+        geometry3.vertices.push(new THREE.Vector3(0, i*5+5, 5));
+        //线构造
+        var line = new THREE.Line(geometry3, material);
+        // 加入到场景中
+        scene.add(line);
+    }
+    // 渲染
+    renderer.render(scene, camera);
+    </script>
+</body>
+
+</html>
