@@ -120,6 +120,7 @@
     var line1 = new THREE.Line(geometry1, material);//线构造
     scene.add(line1);
 
+
     //第四步：添加点
     var geometry = new THREE.Geometry();
     geometry.vertices.push(new THREE.Vector3(15,15,30));
@@ -130,6 +131,7 @@
     var point=new THREE.Points( geometry, material )
     scene.add(point);
 
+
     //第五步：创建渲染器【renderer就是画布元素】
     var renderer = new THREE.WebGLRenderer();
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -139,6 +141,10 @@
     //第六步：渲染
     var step=0;
     var bOK=false;
+    var regionR=111.8;
+    /**
+     * [render 每帧渲染动画]
+     */
     function render(){  
         requestAnimationFrame(render);
         //点的移动
@@ -161,10 +167,10 @@
 
 
         //转动相机
-        var x = 111.8 * Math.cos(camera.position.r);
-        var z = 111.8 * Math.sin(camera.position.r);
+        var x = regionR * Math.cos(camera.position.r);
+        var z = regionR * Math.sin(camera.position.r);
         camera.position.x = x;
-        camera.position.z = z;
+        camera.position.z = z
         camera.lookAt(new THREE.Vector3(0, 0, 0));
         camera.position.r += 0.01;//一开始为0
         // if (camera.position.r >= 0.5*Math.PI) {//转一圈之后，从新为0
@@ -174,7 +180,22 @@
         renderer.render(scene, camera);//渲染画布
     }
     render();
-     //renderer.render(scene, camera);//渲染画布
+    
+    var initial;
+    document.onmousewheel = function(e) {
+        initial=e.deltaY;
+      
+        camera.position.y = 100+(initial+e.deltaY);
+        console.log(camera.position.y);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        // if (regionR >= 10 && regionR <= 100) {
+        //     regionR += e.deltaY * 0.01;
+        // } else if (regionR < 1) {
+        //     regionR = 1;
+        // } else if (regionR > 100) {
+        //     regionR = 111.8;
+        // }
+    };
     </script>
 </body>
 
