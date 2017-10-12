@@ -1,5 +1,5 @@
 # 简介
-使用白鹭Three.js绘制简单页面3D效果
+使用Three.js绘制简单页面3D效果
 参考文档：
 [系统学习Three.js方法](https://www.zhihu.com/question/36367846)
 [官网文档](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene)、
