@@ -1,7 +1,7 @@
 # 简介
 使用Three.js绘制简单页面3D效果<br><br>
 参考文档：<br>
-[系统学习Three.js方法](https://www.zhihu.com/question/36367846)<br>
+[系统学习Three.js方法](https://www.zhihu.com/question/36367846)、<br>
 [官网文档](https://threejs.org/docs/index.html#manual/introduction/Creating-a-scene)、<br>
 [官网中文文档](http://techbrood.com/threejs/docs/)、<br>
 [Udacity课程](https://classroom.udacity.com/courses/cs291)、<br>
