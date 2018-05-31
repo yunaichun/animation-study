@@ -1,0 +1,37 @@
+/* 每个section独立样式为'h5_page_' + uniqueClassName（传参的话） */
+.h5_page_face{
+    background-image: url(../imgs/face_bg.png);
+}
+/* 每个component独立样式为' h5_component_name_'+uniqueClassName */
+.h5_component_name_slogan{
+    -webkit-animation:rock 2s infinite 2s;
+}
+@-webkit-keyframes rock{
+    0%{ transform:rotate(0deg)}
+    5%{ transform:rotate(3deg)}/* 旋转角度 */
+    10%{ transform:rotate(-4deg)}
+    15%{ transform:rotate(3deg)}
+    20%{ transform:rotate(-2deg)}
+    25%{ transform:rotate(1deg)}
+    30%{ transform:rotate(-1deg)}
+    70%{ transform:rotate(0deg)}
+    100%{ transform:rotate(0deg)}
+}
+/* 每个component独立样式为' h5_component_name_'+uniqueClassName */
+.h5_component_name_caption{
+    background-image: url(../imgs/page_caption_bg.png);
+    width: 283px;
+    height: 160px;
+    text-align: center;
+    line-height: 140px;
+    font-size: 20px;
+    color: #fff;
+}
+/* 每个component独立样式为' h5_component_name_'+uniqueClassName */
+.h5_component_name_back{
+    top: 30px;
+    -webkit-animation:back 2s infinite 2s;
+}
+@-webkit-keyframes back{
+    50%{ top: 20px; }
+}

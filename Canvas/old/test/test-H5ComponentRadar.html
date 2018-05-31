@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>IT教育网2015课程学习情况</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-size: 12px;
+        }
+
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;
+        }
+    </style>
+
+    <script type="text/javascript" src="../js/lib/jquery.js"></script>
+    <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
+
+
+    <!-- 引入雷达图的资源 -->
+    <script type="text/javascript" src="../js/H5ComponentRadar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentRadar.css">
+
+    <body>
+        <!-- 用于开发测试 H5ComponentRadar 对象（雷达图组件） -->
+        <div class="iphone">
+
+        </div>
+
+        <script type="text/javascript">
+
+            var cfg = {
+                type : 'radar',
+                
+                width : 400,/*圆的宽高相同*/
+                height : 400,/*圆的宽高相同*/
+                data:[
+                    ['Js' , .9  ,'#ff7676'],
+                    ['CSS3' , .8 ],
+                    ['HTML5' , .7  ],
+                    ['PHP' , .6  ],
+                    ['jQuery' , .5 ]
+                ],
+                css : {
+                    top:100,
+                    opacity:0/*默认不显示*/
+                },
+                animateIn:{
+                    opacity:1,/*入场*/
+                    top:200,
+                },
+                animateOut:{
+                    opacity:0,/*退场*/
+                    top:100,
+                },
+                center : true,
+            }
+
+            /*所有测试组件都是放在iphone元素中*/
+            var h5 = new H5ComponentRadar( 'myBarComponent', cfg );
+            $('.iphone').append(h5);
+
+            /*点击事件切换*/
+            var leave = true;
+            $('body').click(function (){
+                leave = !leave;
+                $('.h5_component').trigger( leave ? 'onLeave' : 'onLoad' )
+            });
+
+        </script>
+
+    </body>
+
+</html>

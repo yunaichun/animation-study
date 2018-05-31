@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
+
+    <title>test-H5ComponentBar</title>
+
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            font-size: 12px;
+        }
+
+        .iphone{
+            width: 340px;
+            height: 540px;
+            background-color: #fff;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin: -270px 0 0 -170px;
+        }
+    </style>
+
+    <script type="text/javascript" src="../js/lib/jquery.js"></script>
+    <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
+
+    <!-- 引入柱图的资源 -->
+    <script type="text/javascript" src="../js/H5ComponentBar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/H5ComponentBar.css">
+
+    <body>
+        <!-- 用于开发测试 H5ComponentBar 对象（柱图组件） -->
+        <div class="iphone">
+
+        </div>
+
+        <script type="text/javascript">
+
+            var cfg = {
+                type : 'bar',
+                
+                width : 530,
+                height : 600,
+                data:[
+                    ['Javascript' , .4  ,'#ff7676'],
+                    ['HTML/CSS' , .2  ],
+                    ['CSS3' , .1 ],
+                    ['HTML5' , .2  ],
+                    ['jQuery' , .35 ],
+                    ['Bootstrap' , .05 ],
+                    ['AngularJs' , .09  ]
+                ],
+                css : {
+                    top:100,/*默认100*/
+                    opacity:0/*默认隐藏*/
+                },
+                animateIn:{/*载入效果，由H5ComponentBase的onLoad触发*/
+                    opacity:1,
+                    top:200,/*载入200*/
+                },
+                animateOut:{/*载出效果*/
+                    opacity:0,
+                    top:100,
+                },
+                center : true,
+            }
+
+
+            /*所有测试组件都是放在iphone元素中*/
+            var h5 = new H5ComponentBar( 'myBarComponent', cfg );
+            $('.iphone').append(h5);
+
+
+            /*点击事件切换*/
+            var leave = true;
+            $('body').click(function (){
+                leave = !leave;
+                $('.h5_component').trigger( leave ? 'onLeave' : 'onLoad' )
+            });
+
+        </script>
+
+    </body>
+
+</html>

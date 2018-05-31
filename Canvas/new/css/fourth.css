@@ -1,0 +1,39 @@
+/* 每个section独立样式为'h5_page_' + uniqueClassName（传参的话） */
+.h5_page_4{
+    background-image: url(../H5/22/1.jpg);
+    background-size: 100% 100%;
+}
+/* 每个component独立样式为' h5_component_name_'+uniqueClassName */
+.h5_component_name_1{
+    background-size: 100% 100%;
+
+    transition: 1s linear all;
+    transform: translateX(-7rem);
+}
+.h5_component_name_2{
+    background-size: 100% 100%;
+
+    transition: 0.8s ease-in all;
+}
+.h5_component_name_3{
+    background-size: 100% 100%;
+    transition: 1s linear all;
+}
+.h5_component_name_4{
+	background-size: 100% 100%;
+    transition: 1s linear all;
+}
+
+/* 每个component的载入样式' h5_component_'+classObject.type+'_load' */
+.h5_component_1_load{
+   transform: translateX(0);
+}
+.h5_component_2_load{
+   transform: rotateY(720deg);
+}
+.h5_component_3_load{
+   transform: rotateX(360deg);
+}
+.h5_component_4_load{
+   transform: rotateY(720deg);
+}

@@ -1,0 +1,6 @@
+/* 基本图文组件样式 */
+.h5_component{
+    background-size: 100%;/* 百分百撑满 */
+    background-repeat: no-repeat;/* 但是不重复 */
+    position: absolute;/* 绝对定位 */
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+    <title>Document</title>
+    
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .component{
+            width:50%;
+            height:50px;
+            margin-bottom: 20px;
+            background-color: #eee;
+            display: none;/* 第一个淡入淡出 */
+        }
+    </style>
+    <script type="text/javascript" src="./js/lib/jquery.js"></script>
+    <script type="text/javascript" src="./js/lib/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./js/lib/jquery.fullPage.js"></script>
+    <script type="text/javascript">
+        $(function(){
+             $('#h5').fullpage({
+                /*sectionsColor: 可以设置翻页时的上/下背景颜色*/
+                'sectionsColor': ['#254875', '#00FF00', '#254587', '#695684'],
+                /*滚动前的回调函数，接收 index、nextIndex 和 direction 3个参数：
+                index 是离开的“页面”的序号，从1开始计算；
+                nextIndex 是滚动到的“页面”的序号，从1开始计算；
+                direction 判断往上滚动还是往下滚动，值是 up 或 down。*/
+                onLeave:function( index, nextIndex, direction) {
+                    /*debugger;*/
+                    $('#h5').find('.page').eq(index-1).trigger('onLeave');
+                },
+                /*滚动到某一屏后的回调函数，接收 anchorLink 和 index 两个参数，anchorLink 是锚链接的名称，index 是序号，从1开始计算*/
+                afterLoad:function( anchorLink, index ) {
+                    /*debugger;*/
+                    $('#h5').find('.page').eq(index-1).trigger('onLoad');
+                }
+            });
+
+             /*所有页面onleave事件：页面离开事件*/
+            $('.page').on('onLeave',function(){
+                console.log( $(this).attr('id') ,'==>>' ,'onLeave' );
+                /*在当前页面的组件触发事件*/
+                $(this).find('.component').trigger('onLeave');
+            })
+            /*所有页面onLoad事件：页面载入事件*/
+            $('.page').on('onLoad',function(){
+                console.log( $(this).attr('id') ,'==>>' ,'onLoad' );
+                /*在当前页面的组件触发事件*/
+                $(this).find('.component').trigger('onLoad');
+            })
+            /*加载时候淡入*/
+            $('.component').on('onLoad',function(){
+                $(this).fadeIn();
+                /*向上传递进入死循环*/
+                return false;
+            })
+            /*离开时候淡出*/
+            $('.component').on('onLeave',function(){
+                $(this).fadeOut();
+                /*向上传递进入死循环*/
+                return false;
+            })
+        })
+    </script>
+</head>
+<body>
+    <div id="h5">
+        <!-- section类名是必加的 -->
+        <div class="page section" id="page-1">
+            <div class="component log">logo</div>
+            <div class="component slogan">slogan</div>
+        </div>
+        <div class="page section" id="page-2">
+            <div class="component desc">描述信息</div>
+        </div>
+        <div class="page section" id="page-3">
+            <div class="component bar">柱状图</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/* 每个component公共样式为  h5_component、h5_component_base */
+.h5_component{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    position: absolute;/* 绝对定位 */
+}
+.h5_component_base{
+	
+}

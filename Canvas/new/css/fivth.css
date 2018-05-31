@@ -1,0 +1,4 @@
+/* 每个section独立样式为'h5_page_' + uniqueClassName（传参的话） */
+.h5_page_5{
+    background-color: #ddd;
+}

@@ -1,0 +1,30 @@
+/* 折线图组件样式 */
+.h5_component_polyline{
+}
+
+.h5_component_polyline canvas{
+    position: absolute;/* 进行分层所以要设置 */
+    left: 0;
+    top: 0; /* 用canvas做动画，会进行分层，要用到  z-index */
+    width: 100%;/* canvas宽度和高度必须和父容器一样大，不能超出 */
+    height: 100%;/* canvas宽度和高度必须和父容器一样大，不能超出 */
+}
+/* 第一项文本信息 */
+.h5_component_polyline .text{
+    position: absolute;/* 漂浮 */
+    font-size: 12px;/* 字体 */
+    text-align: center;/* 居中 */
+    bottom: -20px;/* 底部 */
+    height: 20px;/* 高度 */
+    line-height: 20px;/* 行高 */
+    -webkit-transform:scale(.8);/* 缩放 ，最小12px*/
+    -webkit-transition:all 1s 1.5s;/* 动画 延迟，先让图线显示出来，再显示文本 */
+    -webkit-opacity: 0;/* 默认透明度为0 */
+}
+
+.h5_component_polyline_load .text{
+    -webkit-opacity: 1;/* 文本入场动画 */
+}
+.h5_component_polyline_leave .text{
+    -webkit-opacity: 0;/* 文本出场动画 */
+}

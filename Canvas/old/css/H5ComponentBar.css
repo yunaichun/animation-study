@@ -1,0 +1,70 @@
+/* 柱状组件样式 */
+.h5_component_bar{
+}
+
+/* 最外层div */
+.h5_component_bar .line{
+    height: 15px;/* 需要添加高度，不然样式显示不出来效果 */
+    font-size: 12px;/* 字体 */
+    line-height: 15px;/* 行高 */
+    margin-bottom: 15px;/* 上外边距 */
+}
+
+/* 第一项：名称 */
+.h5_component_bar .name{
+    width: 60px;/* 宽度 */
+    float: left;/* 左浮动 */
+    color: #000;/* 颜色 */
+    text-align: center;/* 水平居中 */
+}
+
+/* 第二项：百分比颜色 */
+.h5_component_bar .rate{
+    height: 15px;/* 高度 */
+    margin-left: 5px;/* 左边有间距 */
+    float: left;/* 左浮动 */
+    position: relative;
+}
+/* 颜色增长有动画 */
+.h5_component_bar .rate .bg{
+    background-color: #99c0ff;/* 背景色 */
+    width: 0%;/* 宽度，一开始自定义是100% */
+    height: 100%;/* 高度 */
+    position: absolute;/* 绝对定位 */
+    left: 0;/* 左 */
+    top: 0;/* 右 */
+    border-radius: 3px;/* 圆角 */
+}
+
+/* 第二项：百分比值 */
+.h5_component_bar .per{
+    width: 20px;/* 宽度 */
+    color: #99c0ff;/* 背景色 */
+    margin-left: 5px;/* 左间距 */
+    float: left;/* 左浮动 */
+    -webkit-opacity:0;/* 透明度，一开始自定义是0*/
+}
+
+/* 刚加载进来时的样式 */
+/* 第二项：百分比颜色 */
+.h5_component_bar_load .rate .bg{
+    -webkit-transition:all 1s .5s;/* 过渡 */
+    /* 这里通过设置父元素的宽度，这样过渡的时候就简单了，只考虑bg从0到100% */
+    width: 100%;/* 一开始是0% */
+}
+/* 第二项：百分比数值 */
+.h5_component_bar_load .per{
+    -webkit-transition:all 1s 1.5s;/* 延时，在颜色变化完成之后在显示百分比值 */
+    -webkit-opacity:1;/* 一开始是0 */
+}
+/* 离开时候的样式 */
+/* 第二项：百分比颜色 */
+.h5_component_bar_leave .rate .bg{
+    width: 0%;
+}
+/* 第二项：百分比数值 */
+.h5_component_bar_leave .per{
+    -webkit-opacity:0;
+}
+
+
