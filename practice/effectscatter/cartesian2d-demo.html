@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+    <title></title>
+</head>
+
+<body>
+    <div id="information" style="width: 400px;float: left;">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>产量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>100</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>300</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>700</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>800</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>700</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>200</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="main" style="width: 600px;height:400px;float: left;">
+        cccc
+    </div>
+    <script type="text/javascript">
+    var information = []; // 数据的源头，取自于表格
+    var info = document.getElementById("information");
+    var table = info.getElementsByTagName("table");
+    var tr = table[0].getElementsByTagName("tr");
+    var myChart = echarts.init(document.getElementById('main'));
+    var chosex, chosey; //被选择的x、y
+    //初始化echarts实例  information
+    gainData(); //获取数据源
+    operationEcharts(); //运行echarts
+    trclick(); //点击table的数据时右边进行标亮
+    interleavecolor(); //隔行变色
+    function gainData() { //将table中的数据赋给information
+        var td = info.getElementsByTagName("td");
+        for (var i = 0; i < td.length - 1; i++, i++) {
+            var x = td[i].innerText * 1; // x轴
+            var y = td[i + 1].innerText * 1; // y轴
+            information.push([ // 获取所有散点数据
+                x,
+                y
+            ]);
+        }
+    }
+    //画echarts
+    function operationEcharts() {
+        var option = {
+            title: {
+                text: 'table与ECharts交互模式'
+            },
+            tooltip: {
+                padding: 10,
+                backgroundColor: '#222',
+                borderColor: '#777',
+                borderWidth: 1,
+                formatter: function(param) {
+                    //                                    return '<div style="border-bottom: 1px solid rgba(255,255,255,.3); font-size: 18px;padding-bottom: 7px;margin-bottom: 7px">'
+                    //                                        + 'table与ECharts交互模式'                                    
+                    //                                        + '</div>'
+                    //                                        + '日期：' + param.data[0]
+                    //                                        + "<div></div>"
+                    //                                        + '产量：' + param.data[1];
+                    console.log(param);
+                }
+            },
+            legend: {
+
+            },
+            xAxis: {
+                splitLine: { show: false },
+                axisLine: {
+                    lineStyle: {
+                        color: {
+                            type: 'linear',
+                            x: 0,
+                            y: 0,
+                            x2: 0,
+                            y2: 1,
+                            colorStops: [{
+                                offset: 0,
+                                color: 'red' // 0% 处的颜色
+                            }, {
+                                offset: 1,
+                                color: 'blue' // 100% 处的颜色
+                            }],
+                            globalCoord: false // 缺省为 false
+                        },
+                        width: 2,
+                    }
+                },
+            },
+            yAxis: {
+                splitLine: { show: true },
+            },
+            series: [{
+                    name: '销量',
+                    type: 'scatter',
+                    data: information,
+                },
+                {
+                    name: 'CHOSE',
+                    type: 'effectScatter',
+                    coordinateSystem: 'cartesian2d',
+                    data: choseData(),
+                    symbolSize: 12,
+                    showEffectOn: 'render',
+                    rippleEffect: {
+                        brushType: 'stroke'
+                    },
+                    hoverAnimation: true,
+                    itemStyle: {
+                        normal: {
+                            shadowBlur: 10,
+                            shadowColor: 'rgba(25, 100, 150, 0.5)',
+                            shadowOffsetY: 5,
+                            color: new echarts.graphic.RadialGradient(0.4, 0.3, 1, [{
+                                offset: 0,
+                                color: '#FF4500'
+                            }, {
+                                offset: 1,
+                                color: '#FFFF00'
+                            }])
+                        }
+                    },
+                    zlevel: 1,
+                    label: {
+                        emphasis: {
+                            show: true,
+                            formatter: function(param) {
+                                return param.data[2];
+                            },
+                            position: 'top',
+                            textStyle: {
+                                color: '#FF4500'
+                            }
+                        }
+                    }
+                }
+            ]
+        };
+        myChart.setOption(option);
+    }
+    console.log(information, choseData());
+    //标亮数据
+    function choseData() {
+        var chose = [];
+        if (null == chosex || null == chosey) {
+            chosex = 1;
+            chosey = 100;
+        }
+        chose.push([chosex, chosey]);
+        return chose;
+    }
+
+    function trclick() {
+        for (var i = 1; i < tr.length; i++) {
+            tr[i].onclick = function clicktr() {
+                interleavecolor();
+                //重新加载一次隔行变色
+                this.style.background = "#FFFF00";
+                //被点击的变为黄色
+                var td = this.getElementsByTagName("td");
+                chosex = td[0].innerText * 1;
+                chosey = td[1].innerText * 1;
+                operationEcharts(); //重新运行Echarts        
+            }
+        }
+    }
+    //隔行变色
+    function interleavecolor() {
+        for (j = 1; j < tr.length; j++) {
+            if (0 != j % 2) {
+                tr[j].style.background = "#F0FFF0";
+            } else {
+                tr[j].style.background = "#FFFAFA";
+            }
+        }
+    }
+    //如果点击echarts图
+    myChart.on('click', function(params) {
+        if (params.componentType == 'series') {
+            for (var k = 1; k < tr.length; k++) {
+                var tablex = String(tr[k].children[0].innerHTML); // 表格中的x轴
+                var tabley = String(tr[k].children[1].innerHTML); // 表格中的y轴
+                var chartx = String(params.data[0]); // 散点中的x轴
+                var charty = String(params.data[1]); // 散点中的y轴
+                if (tablex == chartx && tabley == charty) {
+                    interleavecolor();
+                    // 控制页面滚动到指定位置
+                    tr[k].scrollIntoView();
+                    tr[k].style.background = "#FFFF00";
+                    //                            对应行变为黄色
+                    chosex = params.data[0];
+                    chosey = params.data[1];
+                    operationEcharts(); //重新加载echarts视图
+                    trclick();
+                    break;
+                }
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

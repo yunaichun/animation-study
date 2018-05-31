@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>面排列+正方体-面材质</title>
+</head>
+
+<body>
+    <script src="three.js"></script>
+    <script>
+    //第一步：将相机放入场景
+    var scene, camera, renderer;
+    var regionR = 8;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+    camera.position.set(16, 10, 16);
+    camera.position.r = 0;
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    scene.add(camera);
+
+
+    //第二步：将平面放入场景
+    var groundGeometry = new THREE.PlaneGeometry(1000, 1000);//平面宽高
+    var groundMaterial = new THREE.MeshBasicMaterial({
+        color: 'white',
+        side: THREE.DoubleSide
+    });
+    var ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    ground.rotation.set(Math.PI / 2, 0, 0);
+    scene.add(ground);
+
+
+    //第三步：将三角形平面放入场景
+    var material1 = new THREE.MeshBasicMaterial({
+        color: 'rgb(245,43,110)',
+        side: THREE.DoubleSide
+    });
+    var material2 = new THREE.MeshBasicMaterial({
+        color: 'rgb(205,115,230)',
+        side: THREE.DoubleSide
+    });
+    var material3 = new THREE.MeshBasicMaterial({
+        color: 'rgb(150,140,255)',
+        side: THREE.DoubleSide
+    });
+    var material4 = new THREE.MeshBasicMaterial({
+        color: 'rgb(115,175,230)',
+        side: THREE.DoubleSide
+    });
+    var material5 = new THREE.MeshBasicMaterial({
+        color: 'rgb(125,255,235)',
+        side: THREE.DoubleSide
+    });
+    var material6 = new THREE.MeshBasicMaterial({
+        color: 'rgb(230,220,250)',
+        side: THREE.DoubleSide
+    });
+    var material7 = new THREE.MeshBasicMaterial({
+        color: 'rgb(255,110,135)',
+        side: THREE.DoubleSide
+    });
+    //1
+    var geometry1 = new THREE.Geometry();
+    geometry1.vertices.push(new THREE.Vector3(3, 0, -1.732));
+    geometry1.vertices.push(new THREE.Vector3(3, 3, 0));
+    geometry1.vertices.push(new THREE.Vector3(3, 0, 1.732));
+    geometry1.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle1 = new THREE.Mesh(geometry1, material1);
+    //2
+    var geometry2 = new THREE.Geometry();
+    geometry2.vertices.push(new THREE.Vector3(4.683, 0, -2.704));
+    geometry2.vertices.push(new THREE.Vector3(4.683, 3.5, -1.260));
+    geometry2.vertices.push(new THREE.Vector3(4.683, 0, 2.704));
+    geometry2.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle2 = new THREE.Mesh(geometry2, material2);
+    //3
+    var geometry3 = new THREE.Geometry();
+    geometry3.vertices.push(new THREE.Vector3(6.366, 0, -3.675));
+    geometry3.vertices.push(new THREE.Vector3(6.366, 4, -2.521));
+    geometry3.vertices.push(new THREE.Vector3(6.366, 0, 3.675));
+    geometry3.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle3 = new THREE.Mesh(geometry3, material3);
+    //4
+    var geometry4 = new THREE.Geometry();
+    geometry4.vertices.push(new THREE.Vector3(8.049, 0, -4.647));
+    geometry4.vertices.push(new THREE.Vector3(8.049, 4.5, -3.781));
+    geometry4.vertices.push(new THREE.Vector3(8.049, 0, 4.647));
+    geometry4.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle4 = new THREE.Mesh(geometry4, material4);
+    //5
+    var geometry5 = new THREE.Geometry();
+    geometry5.vertices.push(new THREE.Vector3(9.732, 0, -5.619));
+    geometry5.vertices.push(new THREE.Vector3(9.732, 5, -5.041));
+    geometry5.vertices.push(new THREE.Vector3(9.732, 0, 5.619));
+    geometry5.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle5 = new THREE.Mesh(geometry5, material5);
+    //6
+    var geometry6 = new THREE.Geometry();
+    geometry6.vertices.push(new THREE.Vector3(11.415, 0, -6.590));
+    geometry6.vertices.push(new THREE.Vector3(11.415, 5.5, -6.302));
+    geometry6.vertices.push(new THREE.Vector3(11.415, 0, 6.590));
+    geometry6.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle6 = new THREE.Mesh(geometry6, material6);
+    //7
+    var geometry7 = new THREE.Geometry();
+    geometry7.vertices.push(new THREE.Vector3(13.098, 0, -7.562));
+    geometry7.vertices.push(new THREE.Vector3(13.098, 6, -7.562));
+    geometry7.vertices.push(new THREE.Vector3(13.098, 0, 7.562));
+    geometry7.faces.push(new THREE.Face3(0, 1, 2));
+    var triangle7 = new THREE.Mesh(geometry7, material7);
+
+    var group1 = new THREE.Group();
+    group1.add(triangle1);
+    group1.add(triangle2);
+    group1.add(triangle3);
+    group1.add(triangle4);
+    group1.add(triangle5);
+    group1.add(triangle6);
+    group1.add(triangle7);
+    scene.add(group1);
+    var group2 = group1.clone();
+    group2.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 3);
+    scene.add(group2);
+    var group3 = group1.clone();
+    group3.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 3 * 2);
+    scene.add(group3);
+    var group4 = group1.clone();
+    group4.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 3 * 3);
+    scene.add(group4);
+    var group5 = group1.clone();
+    group5.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 3 * 4);
+    scene.add(group5);
+    var group6 = group1.clone();
+    group6.rotateOnAxis(new THREE.Vector3(0, 1, 0), Math.PI / 3 * 5);
+    scene.add(group6);
+
+
+    //第四步：创建渲染器【renderer就是画布元素】
+    renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        antialias: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    //第五步：渲染
+    var cubes = [];
+    var shouldEmitLight = false;
+    function animate() {
+    	//添加正方体【y在-1的位置】
+        if (Math.ceil((Math.random() * 100)) % 42 == 0) {
+            var boxGeometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
+            var boxMaterial = new THREE.MeshNormalMaterial();
+            var box = new THREE.Mesh(boxGeometry, boxMaterial);
+            var pX = Math.random() * 10 - 5;
+            var pY = -1;
+            var pZ = Math.random() * 10 - 5;
+            box.position.set(pX, pY, pZ);
+            box.rotation.set(1, 1, 1);
+            scene.add(box);
+            cubes.push(box);
+        }
+        //x、y、z轴旋转，同时y轴上升
+        if (cubes.length > 0) {
+            for (var i = 0; i < cubes.length; i++) {
+                cubes[i].position.y += 0.01;
+                cubes[i].rotation.x += 0.01;
+                cubes[i].rotation.y += 0.01;
+                cubes[i].rotation.z += 0.01;
+            }
+        }
+
+
+        //调整摄像机的位置【绕z轴旋转】
+        var x = 2.5 * regionR * Math.cos(camera.position.r);
+        var z = 2.5 * regionR * Math.sin(camera.position.r);
+        camera.position.x = x;
+        camera.position.z = z;
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+        camera.position.r -= 0.001;
+        if (camera.position.r >= 2 * Math.PI) {//一圈之后，重新将摄像机归位
+            camera.position.r = 0;
+        }
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+    animate();
+    </script>
+</body>
+
+</html>

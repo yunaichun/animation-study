@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo-2</title>
+</head>
+
+<body onload="init()">
+    <canvas id="mainCanvas" width="400px" height="300px"></canvas>
+    <script src="http://cdn.rawgit.com/mrdoob/three.js/master/build/three.min.js"></script>
+    <script>
+    function init() {
+        /*渲染器：也就是设置canvas画布*/
+        var renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('mainCanvas')
+        });
+        renderer.setSize(400, 300); //设置canvas画布大小
+        document.getElementsByTagName('body')[0].appendChild(renderer.domElement);
+        renderer.setClearColor(0x000000); //设置画布背景色
+
+
+        /*场景：添加物体就是添加到场景中*/
+        var scene = new THREE.Scene();
+
+
+        /*透视照相机：右手坐标系【照相机需要添加到场景中】*/
+        var camera = new THREE.PerspectiveCamera(45, 4 / 3, 1, 1000);
+        camera.position.set(0, 0, 5);
+        scene.add(camera);
+
+
+        //长方体：添加到场景中【材质+颜色】
+        var cube = new THREE.Mesh(new THREE.CubeGeometry(1, 2, 3),
+            new THREE.MeshBasicMaterial({
+                color: 0xff0000
+            })
+        );
+        scene.add(cube);
+
+
+        //渲染页面
+        renderer.render(scene, camera); 
+    }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>点云场景-点材质</title>
+</head>
+
+<body>
+    <script src="three.js"></script>
+    <script>
+    //第一步：将相机放入场景
+    var scene, camera, renderer;
+    scene = new THREE.Scene();
+    camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight);
+    camera.position.set(0, 0, 3);
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    scene.add(camera);
+
+
+
+    /**
+     * [pointsGenerator 生成num个随机点]
+     * @param  {[type]} num [多少个随机点]
+     * @return {[type]}     [geometry.vertices集合中存放随机点]
+     */
+    function pointsGenerator(num) {
+        var geometry = new THREE.Geometry();
+
+        // var texture = new THREE.TextureLoader().load("https://pic2.zhimg.com/5c73e989dc6c710949624ae25fbce97d_m.jpeg");
+        // var material = new THREE.PointsMaterial({
+        //     size: 0.1,
+        //     map: texture,
+        //     blending: THREE.AdditiveBlending,
+        //     depthTest: false,
+        //     transparent: true
+        // });
+        var material = new THREE.PointsMaterial({
+            color: 'lightblue',
+            size: .1
+        });
+        for (var i = 0; i < num; i++) {
+            var pX = Math.random() * 5 - 2.5;
+            var pY = Math.random() * 3 - 1.5;
+            var pZ = Math.random() * 4 - 2;
+            var particle = new THREE.Vector3(pX, pY, pZ);
+            geometry.vertices.push(particle);
+        }
+        return new THREE.Points(geometry, material);
+    }
+    //第二步：将随机点放入场景
+    var rain = pointsGenerator(100);
+    rain.position.set(0, 0, 0);
+    scene.add(rain);
+
+
+    //第三步：将随机点放入场景
+    var additionRain = pointsGenerator(100);
+    additionRain.position.set(0, 3, 0);
+    scene.add(additionRain);
+
+
+    //第四步：创建渲染器【renderer就是画布元素】
+    renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+
+    //第五步：渲染
+    function animate() {
+        rain.position.y -= 0.1;//每0.1的下降
+        //下降到-3位置，在3的位置重新添加
+        if (rain.position.y <= -3) {
+            scene.remove(rain);
+            rain = pointsGenerator(100);
+            rain.position.set(0, 3, 0);
+            scene.add(rain);
+        }
+        additionRain.position.y -= 0.1;
+        if (additionRain.position.y <= -3) {
+            scene.remove(additionRain);
+            additionRain = pointsGenerator(100);
+            additionRain.position.set(0, 3, 0);
+            scene.add(additionRain);
+        }
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+    animate();
+    </script>
+</body>
+
+</html>
