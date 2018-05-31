@@ -1,0 +1,59 @@
+@charset "utf-8";
+/* CSS Document */
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,pre, form, fieldset, input, textarea, p, blockquote, th, td {
+	padding: 0; margin: 0;
+}
+/* 去除img的默认边框 */    
+fieldset, img { 
+	border: 0; 
+}    
+table {
+	order-collapse: collapse; 
+    border-spacing: 0;
+}     
+address, caption, cite, code, dfn, em, strong, th, var { 
+	font-weight: normal; 
+	font-style: normal;
+}    
+caption, th {
+	text-align: left;
+}    
+h1, h2, h3, h4, h5, h6 {
+	font-weight: normal;
+	font-size: 100%;
+}    
+q:before, q:after {
+	content: '';
+}    
+abbr, acronym {border: 0;}
+/* 去除项目符号 */
+ol, ul {
+	list-style: none; 
+}  
+/* 去除a标签下划线 */
+a{
+	text-decoration: none;
+}  
+
+/*  
+:before指的是在此标签的内部最前面
+:after指的是在此标签的内部最后面 
+因为内部设置float产生的影响，都可以在直接父级元素添加此属性
+*/
+.clearfix:before,
+.clearfix:after{
+    content: "";
+    display: table;
+    /* display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;  */
+}
+.clearfix:after{
+    clear: both;
+}
+/* ie6、7兼容 */
+.clearfix{
+    zoom: 1;
+}

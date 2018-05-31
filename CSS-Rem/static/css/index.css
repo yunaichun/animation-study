@@ -1,0 +1,137 @@
+.index_ad{
+	height: 320px;
+	margin-top: 5px;
+}
+
+.info{
+	height: 320px;
+	margin-top: 5px;
+	background-color: #FFF;
+}
+.info_left{
+	width: 340px;
+	height: 250px;
+	border: 1px solid #E8E8E8;
+	float: left;
+}
+.title{
+	height: 35px;
+	line-height: 35px;
+	border-bottom: 2px solid #E8E8E8;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	font-weight: bold;
+	color: #786F66;
+}
+.titile_left{
+	float: left;
+	width: 70%;
+	padding-left: 20px;
+}
+.titile_right{
+	float: right;
+	width: 20%;
+	text-align: right;
+}
+.titile_right a{
+	color: #999;
+	font-size: 10px;
+	font-family: "ËÎÌå";
+	font-weight: normal;
+	padding-right: 10px;
+}
+.left_pic{
+	height: 80;
+	margin-top: 10px;
+	line-height: 22px;
+}
+.left_pic img{
+	float: left;
+	margin: 0 5px;
+	width: 113px;
+	height: 77px;
+}
+.left_pic h2 a{
+	color: #C00;
+	font-weight: bold;
+}
+.left_pic p a{
+	color: #C00;
+}
+.left_news {
+	margin-top: 20px;
+}
+.left_news li{
+	height: 17px;
+	line-height:17px;
+	border-bottom:1px dotted #CCC;
+	margin:8px;
+	padding-left: 10px;
+	background: url(../imgs/list.jpg) no-repeat ;
+}
+.left_news a:link,.left_news a:visited{
+	color: #000;
+}
+.left_news a:hover,.left_news a:active{
+	color: #F00;
+}
+.left_news span{
+	float: right;
+}
+
+
+.info_mid{
+	width: 410px;
+	height: 250px;
+	border: 1px solid #E8E8E8;
+	margin: 0 7px;
+	float: left;
+
+}
+.mid_pic{
+	width: 120px;
+	margin-top: 10px;
+	line-height: 22px;
+	display: inline;
+}
+.mid_pic img{
+	float: left;
+	margin: 0 5px;
+	width: 158px;
+	height: 106px;
+}
+.mid_pic a{
+	color: #C00;
+	font-weight: bold;
+}
+.mid_class{
+	width: 372px;
+	height: 37px;
+	margin: 20px auto;
+	background: url(../imgs/product_type_bg.jpg) no-repeat;
+}
+.mid_class li{
+	float: left;
+	margin: 0 15px;
+	line-height: 37px;
+	text-align: center;
+}
+
+
+.info_right{
+	height: 250px;
+	width: 230px;
+	float: left;
+}
+.right_video {
+	height: 185px;
+	margin-bottom: 10px;
+	border: 1px solid #E8E8E8;
+}
+.right-content{
+	height: 150px;
+}
+.right_pic{
+	height: 55px;
+	border: 1px solid #E8E8E8;
+}

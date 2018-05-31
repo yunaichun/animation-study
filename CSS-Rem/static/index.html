@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/index.css">
+	<link rel="stylesheet" href="./css/public.css">
+	<script type="text/javascript" src="./js/myfocus-2.0.1.min.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		//焦点图设置
+		myFocus.set({
+		    id:'boxID',//焦点图id
+		    pattern:'mF_fancy',//风格应用的名称
+		    time:3,//切换时间间隔(秒)
+		    trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+		    width:1000,//设置图片区域宽度(像素)
+		    height:310,//设置图片区域高度(像素)
+		    txtHeight:'default'//文字层高度设置(像素),'default'为默认高度，0为隐藏
+		});
+	</script>
+</head>
+<body>
+	<header>
+		<nav class="header_content">
+			<ul>
+			    <li><a href="javascript:void(0)">联系我们</a></li>
+				<li><a href="javascript:void(0)">加入收藏</a></li>
+				<li><a href="#">设为首页</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<div class="content">
+		<div class="logo">
+				<div class="logo_left"><img src="imgs/logo.jpg" alt="学习网站"></div>
+				<div class="logo_right"><img src="imgs/tel.jpg" alt="服务在线">24显示服务热线<span class="tel">123-456-7890</span></div>
+		</div>
+		<div class="nav">
+		    <div class="nav_start"></div>
+		    <div class="nav_content">
+		    	<div class="nav_content_left">
+		    		<ul>
+		    			<li><a href="#">首页</a></li>
+		    			<li><a href="#">关于编程</a></li>
+		    			<li><a href="#">新闻动态</a></li>
+		    			<li><a href="#">课程中心</a></li>
+		    			<li><a href="#">在线课程</a></li>
+		    			<li><a href="#">人才招聘</a></li>
+		    		</ul>
+		    	</div>
+		    	<div class="nav_content_right">
+		    		<form action="" method="post">
+		    			<input type="text" class="search">
+		    		</form>
+		    	</div>
+		    </div>
+		    <div class="nav_end"></div>
+		</div>
+		<div class="index_ad">
+		    <div id="boxID">
+		      <div class="loading"><img src="imgs/loading.gif" alt="图片加载中" /></div>
+		      <div class="pic">
+		        <ul>
+		          <li><a href="#"><img src="imgs/ad2.jpg" thumb="" alt="" text="ÏêÏ¸ÃèÊö2" /></a></li>
+		          <li><a href="#"><img src="imgs/ad3.jpg" thumb="" alt="" text="ÏêÏ¸ÃèÊö3" /></a></li>
+		          <li><a href="#"><img src="imgs/ad4.jpg" thumb="" alt="" text="ÏêÏ¸ÃèÊö4" /></a></li>
+		        </ul>
+		      </div>
+		    </div>
+	    </div>
+		<div class="info">
+			<div class="info_left">
+				<div class="title">
+					<h2 class="titile_left">新闻中心</h2>
+					<span class="titile_right"><a href="#">More&gt;&gt;</a></span>
+				</div>
+				<div class="left_pic">
+			       <img src="imgs/news.jpg" alt="">
+			       <h2><a href="#">女神喊你来表白</a></h2>
+			       <p>活动时间：5月20日-5月25日<br />
+			          获奖公布时间：5月26日<br />
+			          <a href="#">Learn More>></a>
+			        </p>
+				</div>
+				<div class="left_news">
+					<ul>
+			          <li><span>2014-06-01</span><a href="news.html">【课程访谈 用户篇】 “有为屌丝” 在路上</a></li>
+			          <li><span>2014-06-01</span><a href="news.html">【有奖活动】 给父亲的三行书信</a></li>
+			          <li><span>2014-05-30</span><a href="news.html">《程序员，请晒出你的童年》 活动获奖公告</a></li>
+			          <li><span>2014-05-28</span><a href="news.html" title="aa">【课程访谈】破茧成蝶-美女程序员的蜕变史</a></li>
+			        </ul>
+				</div>
+			</div>
+			<div class="info_mid">
+				<div class="title">
+					<h2 class="titile_left">课程中心</h2>
+					<span class="titile_right"><a href="#">More&gt;&gt;</a></span>
+				</div>
+				<div class="mid_pic">
+					<img src="./imgs/css.jpg" alt="CSS圆角进化论">
+					<h2><a href="news.html">CSS圆角进化论</a></h2>
+			        <p>CSS原件的实现，经历了三大发展阶段：北京图片方式、CSS2.0+HTML标签模拟、CSS3.0圆角属性。本案例详细讲解每一种的实现方式，并对实现的优缺点进行对比分析。</p>
+				</div>
+				<div class="mid_class">
+					<ul>
+			          <li>PHP开发</li>
+			          <li>前端开发</li>
+			          <li>JAVA开发</li>
+			          <li>Android开发</li>
+			        </ul>
+				</div>
+			</div>
+			<div class="info_right">
+			    <div class="right_video">
+					<div class="title">
+						<h2 class="titile_left">媒体聚焦</h2>
+						<span class="titile_right"><a href="#">More&gt;&gt;</a></span>
+					</div>
+					<p class="right-content">
+			          <embed src="http://player.youku.com/player.php/sid/XNjkzMDE5MTUy/v.swf" allowFullScreen="true" quality="high" width="220" height="140" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+			        </p>
+		        </div>
+		        <div class="right_pic"><img src="imgs/app.jpg" /></div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		  <div class="footer_copyright">
+		    <ul>
+		      <li>关于
+		        <ul>
+		            <li>品牌故事</li>
+		            <li>联系我们</li>
+		            <li>加入我们</li>
+		            <li>版权申明</li>
+		        </ul>
+		      </li>
+		      <li>课程
+		        <ul>
+		            <li>PHP开发</li>
+		            <li>前端开发</li>
+		            <li>JAVA开发</li>
+		            <li>Android开发</li>
+		        </ul>
+		      </li>
+		      <li>留言
+		        <ul>
+		            <li>新浪微博</li>
+		            <li>腾讯微博</li>
+		            <li>企业微信</li>
+		            <li>QQ空间</li>
+		        </ul>
+		      </li>
+		      <li>关注
+		        <ul>
+		            <li>意见反馈</li>
+		            <li>问题留言</li>
+		            <li>媒体联络</li>
+		            <li>在线客服</li>
+		        </ul>
+		      </li>
+		      <li>
+			        <img src="imgs/weixin.png" alt="微信图标" width="30" height="27" />微信关注
+		            <ul>
+			          <li><img src="imgs/qrcode.jpg" alt="微信二维码" width="102" height="102" /></li>
+		            </ul>
+		      </li>
+		    </ul>
+		</div>
+	</footer>
+</body>
+</html>

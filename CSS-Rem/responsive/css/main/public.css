@@ -1,0 +1,129 @@
+html{
+	font-size: 62.5%;
+	color: #222;
+	background-color: #f7f7f7
+}
+body{
+	font-size: 1.2em;
+}
+
+header .top{
+	height: 3rem;
+	padding: 0 1.5rem;
+	border-bottom: 1px #ecc000 solid;
+	line-height: 3rem;
+	color: #fff;
+    background: #555;
+}
+header .top .tel{
+	float: left;
+}
+header .top ul{
+	float: right;
+}
+header .top ul li{
+	float: left;
+	margin-left: -3px;
+}
+header .top ul li+li{
+	border-left: 1px solid #999;
+}
+header .top ul li a {
+	padding: 0 1.5rem;
+    color: #fff;
+}
+header .top ul li a:hover{
+	text-decoration: underline;
+}
+
+header .logo{
+	height: 5.5rem;
+	line-height: 5.5rem;
+}
+header .logo .brand {
+    float: left;
+    height: 4.5rem;
+    padding: 1rem 1.5rem 0;
+}
+header .logo ul{
+	float: right;
+}
+header .logo ul li{
+	float: left;
+	border-left: 1px solid #f0ede9;
+}
+header .logo ul li a{
+	display: inline-block;
+	padding: 0 2.5rem;
+	font-size: 1.6rem;
+	font-weight: bold;
+	color: #7c7a65;
+}
+header .logo ul li a:hover,header .logo ul li a:active{
+    color: #ffb300;
+    background-color: #f8f6f1;
+}
+
+
+footer {
+    width: 100%;
+    padding: 3rem 0 5rem;
+    background-color: #ededed;
+}
+footer ul{
+	text-align: center;
+}
+footer ul li{
+	display: inline-block;
+}
+footer ul li .icon{
+	display: inline-block;
+	margin-right: 1.5rem;
+	text-indent: -999rem;
+	background: url(https://i.alipayobjects.com/e/201307/jebmKcbrh.png) no-repeat;
+	background-size: 466px 447px;
+	overflow: hidden;
+}
+footer ul li .icon-zfywxk {
+    width: 38px;
+    height: 27px;
+    background-position: -369px -45px;
+}
+footer ul li .icon-pcirk {
+    width: 78px;
+    height: 27px;
+    background-position: -110px -96px;
+}
+footer ul li .icon-visayz {
+    width: 36px;
+    height: 27px;
+    background-position: -426px -90px;
+}
+footer ul li .icon-vsjmfw {
+    width: 63px;
+    height: 27px;
+    margin-right: 13px;
+    background-position: -401px -186px;
+}
+footer ul li .icon-wlgs {
+    width: 22px;
+    height: 27px;
+    background-position: -48px -48px;
+}
+footer ul li .icon-rzcx {
+    width: 75px;
+    height: 27px;
+    background-position: 0 -320px;
+}
+footer ul li .icon-gs {
+    width: 30px;
+    height: 30px;
+    margin-right: 0;
+    background: url(https://os.alipayobjects.com/rmsportal/lybcjqloSPjMAFg.png) no-repeat;
+    background-size: 30px;
+}
+footer p {
+    text-align: center;
+    margin: 12px 0;
+    color: #999;
+}

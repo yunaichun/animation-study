@@ -1,0 +1,234 @@
+.container{
+	width: 100%;
+}
+.transaction{
+	width: 100%;
+    background-color: #7c7365;
+}
+.trans-content{
+	max-width: 90%;
+	margin: 0 auto;
+	font-size: 1.5rem;
+}
+.trans-data{
+	float: left;
+	padding:1rem;
+}
+.trans-data span {
+    display: inline-block;
+    line-height: 3rem;
+    color: #fff;
+}
+.trans-data span.trans-money {
+	border-radius: 3px;
+	margin: 0 1rem;
+    padding: 0 1rem;
+    font-size: 2.2rem;
+    color: #ff9900;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 1px 2px 1px #333 inset;/* 水平，垂直，模糊距离，颜色，内阴影 */
+    letter-spacing: 3px;/* 增加或减少单词间的空白(即字间隔)*/
+}
+.trans-report{
+	float: right;
+}
+.trans-report a{
+	display: inline-block;
+	padding: 1rem;
+    line-height: 3rem;
+    color: #fff;
+}
+.trans-report a:hover{
+	text-decoration: underline;
+}
+
+
+.feature{
+	width: 90%;
+	margin: 2rem auto;
+}
+.feature .item{
+	display: inline-block;
+	box-shadow: 0 0 4px #ccc;
+	padding: 1rem 1rem 1rem 1rem;
+	width: calc((99% - 9rem)/3);
+}
+.feature .item + .item {
+    margin-left: 1.5rem;
+}
+.feature .item h3{
+	display: inline-block;
+	width: 40%;
+	margin: 0;
+	padding:0;
+	text-align: center;
+	vertical-align: top;
+	font-size: 3.3rem;
+	color: #ff9900;
+}
+.feature .item p{
+	display: inline-block;
+	width: 55%;
+    margin: 0;
+    padding: 0;
+    color: #999;
+}
+
+
+.notice{
+	width:90%;
+	margin: 2rem auto;
+	box-shadow: 0 0 4px #ccc;
+	line-height: 3rem;
+    font-size: 1.4rem;
+    background-color: #fff;
+}
+.notice a {
+    float: left;
+    display: inline-block;
+    width: 70%;
+    margin-left: 2rem;
+    color: #666;
+}
+.notice a:first-child{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.notice a:first-child:hover{
+	color: #0ae;
+}
+.notice a:first-child:before {
+    content: '最新公告: \00a0\00a0';
+    color: #aaa;
+}
+.notice a span{
+	margin-right: 1rem;
+	font-size: 1.2rem;
+	color: #999; 
+}
+.notice a.more{
+	float: right;
+	display: inline-block;
+	width: auto;
+	margin-right: 2rem;
+    color: #ff9900;
+}
+
+
+
+.product{
+	width: 90%;
+	margin: 2rem auto;
+	border-top: 2px solid #ff9900;
+	box-shadow: 0 0 4px #ccc;
+	font-size: 1.4rem;
+	background-color: #f5f9fa;
+}
+.product-description{
+	float: left;
+	width: 20%;
+}
+.product-description h2{
+	margin-top: 3rem;
+	text-align: center;
+	font-size: 2.4rem;
+	font-weight: normal;
+	color: #635c51;
+}
+.product-description h2 em{
+	display: block;
+	margin-top: 1rem;
+	font-size: 1.6rem;
+}
+.product-description h2 em:first-child{
+	margin-top: 4rem;
+}
+.product-content{
+	float: right;
+	width: 79.5%;
+	border-left: 1px solid #eee;
+	background-color: #fff;
+}
+.product .product-content .item {
+	width: 100%;
+	overflow: hidden;
+}
+.product .product-content .item + .item{
+	border-top: 1px solid #eee;
+}
+.product .product-content .item h3{
+	float: left;
+	width: 30%;
+	margin: 1.5rem 0;
+	text-align: center;
+	font-size: 1.4rem;
+	font-weight: normal;
+
+	padding-bottom: 200px;
+	margin-bottom: -200px;
+}
+.product .product-content .item h3 em{
+	margin-right:  0.5rem;
+	font-size: 3.6rem;
+	font-style: normal;
+	color: #8b999d;
+}
+.product .product-content .item .info{
+	display: block;
+	float: left;
+	width: 48%;
+	height: inherit;
+	padding:1rem;
+	border-left: 1px solid #eee;
+    border-right: 1px solid #eee;
+    font-size: 14px;
+
+    padding-bottom: 200px;
+	margin-bottom: -200px;
+}
+.product .product-content .item .info p{
+	float: left;
+	display: inline-block;
+	text-align: center;
+	width: 56%;
+}
+.product .product-content .item .info p:last-child {
+	width: 40%;
+}
+.product .product-content .item .info p span{
+	display: block;
+	font-size: 2.4rem;
+	color: #ff9900;
+}
+.product .product-content .item .info p span i {
+	font-size: 1.2rem;
+    font-style: normal;
+    color: #999;
+}
+.product .product-content .item .buy{
+	float: left;
+	width: calc(22% - 4.2rem);//h3:30%;info:48%(padding:1rem;border:2px);buy(padding: 1rem;)
+	padding: 1rem;
+
+	padding-bottom: 200px;
+	margin-bottom: -200px;
+}
+.product .product-content .item .buy a{
+	display: block;
+	width: 90%;
+	margin: 1.5rem auto;
+	border-radius: 5px;
+	line-height: 4rem;
+	text-align: center;
+	color: #fff;
+	background-color: #ff9900;
+}
+.product .product-content .item .buy a:hover,
+.product .product-content .item .buy a:active{
+	background-color: #ffc468;
+}
+.product .product-content .item .buy a.disabled {
+    background-color: #ccc !important;
+    cursor: not-allowed;
+}
