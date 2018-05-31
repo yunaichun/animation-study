@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+       <meta charset="utf-8">
+   </head>
+   <body style="height: 100%; margin: 0">
+       <div id="container" style="height: 100%"></div>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-gl/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts-stat/ecStat.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+       <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/simplex.js"></script>
+       <script type="text/javascript">
+var dom = document.getElementById("container");
+var myChart = echarts.init(dom);
+var app = {};
+option = null;
+//后台返回数据
+var nodes = [
+    [
+        { id: 1, name:'上级数据池', level: 1 }, 
+        { id: 2, name:'中心数据池', level: 0 }
+    ],
+    [
+        { id: 2, name:'中心数据池', level: 0 }, 
+        { id: 5, name:'下级数据池', level: 3}
+    ],
+    [
+        { id: 2, name:'中心数据池', level: 0 }, 
+        { id: 1, name:'上级数据池', level: 1 }
+    ],
+    [
+        { id: 2, name:'中心数据池', level: 0 }, 
+        { id: 3, name:'同级1数据池', level: 2 }
+    ],
+    [ 
+        { id: 1, name:'中心数据池', level: 0 }, 
+        { id: 4, name:'同级2数据池', level: 2 }
+    ],
+    [
+        { id: 3, name:'同级1数据池', level: 2 }, 
+        { id: 5, name:'下级数据池', level: 3 }
+    ],
+    [
+        { id: 3, name:'同级1数据池', level: 2 }, 
+        { id: 4, name:'同级2数据池', level: 2 }
+    ],
+    [
+        { id: 5, name:'下级数据池', level: 3 }, 
+        { id: 1, name:'上级数据池', level: 1 }
+    ]
+];
+//根据level计算出坐标位置
+var geoCoordMap = {
+    '上级数据池': [100, 53], //经度[73-133]，维度[23-53]
+    '中心数据池': [100, 38],
+    '同级1数据池': [133, 38], 
+    '同级2数据池': [73, 38], 
+    '下级数据池': [100, 23]
+};
+//需要转换求值得数据
+var convertData = function (data) {
+    var res = [];
+    for (var i = 0; i < data.length; i++) {
+        var dataItem = data[i];
+        var fromCoord = geoCoordMap[dataItem[0].name]; //起点经纬度
+        var toCoord = geoCoordMap[dataItem[1].name]; //终点经纬度
+        if (fromCoord && toCoord) {
+            res.push({
+                fromName: dataItem[0].name,//起点名称
+                toName: dataItem[1].name,//终点名称
+                coords: [fromCoord, toCoord]//起点、终点经纬度
+            });
+        }
+    }
+    return res;
+};
+var a = nodes.map(function (dataItem) {
+            return {
+                name: dataItem[1].name , //终点名称
+                value: geoCoordMap[dataItem[1].name] //终点坐标
+            };
+        })
+console.log('aaaaa',convertData(nodes), a);
+//配置系列数据源
+var series = [];
+series.push(
+    //动态线条的配置
+    {
+        name: '动态特效线条',
+        type: 'lines',
+        zlevel: 1,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0.7,
+            color: '#17DFB4',
+            symbolSize: 3
+        },
+        lineStyle: {
+            normal: {
+                color: '#ffffff', //线条默认颜色是白色
+                width: 0,
+                curveness: 0.2
+            }
+        },
+        data: convertData(nodes) //起点、终点名称和经纬度
+    },
+    //含有箭头的初始线条
+    {
+        name: '初始静态线条',
+        type: 'lines',
+        zlevel: 2,
+        symbol: ['none', 'arrow'],
+        symbolSize: 10,
+        effect: {
+            show: true,
+            period: 6,
+            trailLength: 0,
+            symbol: 'circle',
+            symbolSize: 0.5
+        },
+        lineStyle: {
+            normal: {
+                color: '#ffffff',
+                width: 1,
+                opacity: 0.6,
+                curveness: 0.2
+            }
+        },
+        data: convertData(nodes)//起点、终点名称和经纬度
+    },
+    //终点的配置项【文字】
+    {
+        name: '终点文字配置',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',
+        zlevel: 2,
+        rippleEffect: {
+            brushType: 'stroke'
+        },
+        label: {
+            normal: {
+                show: true,
+                position: 'bottom',
+                formatter: '{b}',
+                fontSize: 14,
+                color: '#fff',
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                padding: [10, 10, 10, 10],
+                offset:[0, 10],
+            }
+        },
+        data: nodes.map(function (dataItem) {
+            return {
+                name: dataItem[1].name , //终点名称
+                value: geoCoordMap[dataItem[1].name] //终点坐标
+            };
+        })
+    },
+    //终点的配置项【背景图】
+    {
+        name: '终点背景图',
+        type: 'effectScatter',
+        coordinateSystem: 'geo',//参考坐标系
+        zlevel: 2, //cavans图层
+        symbolSize: function (val) { //配置终点大小
+            return 60;
+        },
+        itemStyle: {//配置终点颜色
+            normal: {
+                color: 'rgba(255, 255, 255, 0)'
+            }
+        },
+        data: nodes.map(function (dataItem) {
+            var img = dataItem[1].name === '中心数据池' ? 'https://gss1.bdstatic.com/9vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=187afb979e82d158af8f51e3e16372bd/2f738bd4b31c870168f8cf9f257f9e2f0708ff79.jpg' : 'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3006944761,1696898371&fm=27&gp=0.jpg'
+            return {
+                name: dataItem[1].name , //终点名称
+                value: geoCoordMap[dataItem[1].name], //终点坐标
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'top',
+                        backgroundColor: {
+                            image: img,
+                        },
+                        color: 'rgba(255, 255, 255, 0)',
+                        padding: 30,
+                        offset:[0,60]
+                    }
+                },
+            };
+        })
+    }
+);
+//echarts整体配置
+option = {
+    backgroundColor: '#404a59',
+    title : {
+        text: '模拟迁徙',
+        subtext: '数据纯属虚构',
+        left: 'center',
+        textStyle : {
+            color: '#fff'
+        }
+    },
+    tooltip : {
+        show: false,
+        trigger: 'item'
+    },
+    legend: {
+        orient: 'vertical',
+        top: 'bottom',
+        left: 'right',
+        data:['北京 Top10'],
+        textStyle: {
+            color: '#fff'
+        },
+        selectedMode: 'single'
+    },
+    geo: {
+        map: 'china',
+        label: {
+            emphasis: {
+                show: false
+            }
+        },
+        roam: true,
+        itemStyle: {
+            normal: {
+                areaColor: '#323c48',
+                // opacity: 0,
+                borderColor: '#404a59'
+            },
+            emphasis: {
+                areaColor: '#2a333d'
+            }
+        }
+    },
+    series: series
+};
+if (option && typeof option === "object") {
+    myChart.setOption(option, true);
+}
+myChart.on('click', function (params) {
+    console.log(params);
+    if(params.componentType==='series'){
+        alert(1);
+    }
+});
+       </script>
+   </body>
+</html>
