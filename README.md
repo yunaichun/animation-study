@@ -6,6 +6,9 @@
 [官网中文文档](http://techbrood.com/threejs/docs/)、<br>
 [Udacity课程](https://classroom.udacity.com/courses/cs291)、<br>
 [张雯莉分享](https://read.douban.com/reader/ebook/7412854/)<br><br>
+参考书籍：<br>
+[Three.js入门指南](https://github.com/Ovilia/ThreeExample.js)、<br>
+[Three.js开发指南](https://github.com/josdirksen/learning-threejs.git)<br><br>
 高级案例：<br>
 [雨叔-知乎专栏](https://zhuanlan.zhihu.com/raincle)、<br>
 [飞行器游戏](https://tympanus.net/codrops/2016/04/26/the-aviator-animating-basic-3d-scene-threejs/)、<br>
