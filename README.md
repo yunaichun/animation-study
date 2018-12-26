@@ -8,5 +8,6 @@
 - Canvas：组件化编写<br>
 - Echarts：动态散点图EffectScatter地图坐标系、直角坐标系渲染<br>
 - Three.js：学习Three.js<br>
+- webpack：学习webpack<br>
 
 未完待续。
