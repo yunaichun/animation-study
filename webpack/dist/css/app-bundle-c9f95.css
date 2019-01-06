@@ -1,0 +1,34 @@
+/* less变量 */
+
+html {
+  background: #FFFFFF;
+}
+
+/* .box {
+	composes: bigBox from './common.less';
+	height: 200px;
+	width: 200px;
+	border-radius: 4px;
+	background: #333;
+	transition: transform 1s;
+}
+postcss-cssnext变量
+:root {
+	--mainColor: red;
+}
+a{
+	color: var(--mainColor);
+} 
+*/
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url(/assets/font/fontawesome-webfont-674f5.eot);
+  src: url(/assets/font/fontawesome-webfont-674f5.eot?#iefix&v=4.7.0) format('embedded-opentype'), url(/assets/font/fontawesome-webfont-af7ae.woff2) format('woff2'), url(/assets/font/fontawesome-webfont-fee66.woff) format('woff'), url(/assets/font/fontawesome-webfont-b0687.ttf) format('truetype'), url(/assets/font/fontawesome-webfont-912ec.svg#fontawesomeregular) format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-size: 20px;
+}

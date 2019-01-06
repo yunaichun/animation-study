@@ -6,6 +6,7 @@ const PurifyCSS = require('purifycss-webpack');
 const HtmlWebpackInlineChunkPlugin = require('html-webpack-inline-chunk-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = {
     plugins: [
@@ -29,6 +30,8 @@ module.exports = {
              minChunks: Infinity
             }),
         */
+        // 清空已打包内容
+        new CleanWebpackPlugin(['dist']),
         // 提取css
         new ExtractTextWebpackPlugin({
             filename: 'css/[name]-bundle-[hash:5].css',
@@ -41,17 +44,18 @@ module.exports = {
                 path.join(__dirname, './*.html')
             ])
         }),
+        // 压缩JS
+        new webpack.optimize.UglifyJsPlugin(),
         // 提取 webpack 生成代码
         new webpack.optimize.CommonsChunkPlugin({
             name: "manifest",
             minChunks: Infinity
         }),
+        // HTML中载入webpack生成的代码
         new HtmlWebpackInlineChunkPlugin({
             inlineChunks: ['manifest']
         }),
-        // 压缩JS
-        new webpack.optimize.UglifyJsPlugin(),
-        // 清空已打包内容
-        new CleanWebpackPlugin(['dist'])
+        // 打包结果分析
+        new BundleAnalyzerPlugin()
     ],
 };
