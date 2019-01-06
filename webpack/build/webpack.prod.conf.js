@@ -16,7 +16,7 @@ module.exports = {
         // 二、提取css
         new ExtractTextWebpackPlugin({
             filename: 'css/[name]-bundle-[hash:5].css',
-            allChunks: true // 如果为true，指的是将所有import的css文件提取到一个文件中；如果为false，只会提取同步import的css文件
+            allChunks: false // 如果为true，指的是将所有import的css文件提取到一个文件中；如果为false，只会提取同步import的css文件
         }),
         // 二、压缩css：必须放在 ExtractTextWebpackPlugin 之后
         new PurifyCSS({
@@ -74,6 +74,10 @@ module.exports = {
         new HtmlWebpackInlineChunkPlugin({
             inlineChunks: ['manifest']
         }),
+
+        // 五、业务代码引入模块发生变化 -> chunk的id发生变化 -> chunkhash变化 -> 最终导致第三方代码的版本号也会发生变化
+        new webpack.NamedChunksPlugin(), // chunk 添加名称
+        new webpack.NamedModulesPlugin(), // module 添加名称
 
         // 五、打包结果分析
         // new BundleAnalyzerPlugin()

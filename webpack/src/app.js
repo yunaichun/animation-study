@@ -54,8 +54,6 @@ $.get('/place/queryMapInitData', function (data) {
     console.log(data);
 });
 
-console.log(111111);
-
 if (module.hot) {
     module.hot.accept();
 }

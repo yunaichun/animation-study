@@ -137,7 +137,7 @@ const baseConfig = env => {
     return {
         entry: {
             app: path.join(__dirname, '../src/app.js'),
-            vendor: [path.resolve(__dirname, '../src/lib/jquery.min.js')]
+            vendor: [path.resolve(__dirname, '../src/lib/jquery.min.js'), 'vue']
             // app2: './src/app2.js',
             // vendor: ['lodash']
         },
