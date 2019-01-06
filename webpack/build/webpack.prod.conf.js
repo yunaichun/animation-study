@@ -44,13 +44,13 @@ module.exports = {
         // 提取css
         new ExtractTextWebpackPlugin({
             filename: 'css/[name]-bundle-[hash:5].css',
-            allChunks: false // 如果为true，指的是将所有import的css文件提取到一个文件中；如果为false，只会提取同步import的css文件
+            allChunks: true // 如果为true，指的是将所有import的css文件提取到一个文件中；如果为false，只会提取同步import的css文件
         }),
         // 压缩css：必须放在 ExtractTextWebpackPlugin 之后
         new PurifyCSS({
             paths: glob.sync([ // 指定多路径、同时加载多路径
-                path.join(__dirname, './src/**/*.js'),
-                path.join(__dirname, './*.html')
+                path.join(__dirname, '../src/**/*.js'),
+                path.join(__dirname, '../*.html')
             ])
         }),
         // 压缩JS
