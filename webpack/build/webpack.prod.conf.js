@@ -30,8 +30,17 @@ module.exports = {
              minChunks: Infinity
             }),
         */
-        // 清空已打包内容
-        new CleanWebpackPlugin(['dist']),
+        // 清空已打包内容：根目录不变，删除 dist 目录下出去 dll目录的所有文件
+        new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '../'), exclude: ['dll'] }),
+        // 引入第三方代码
+        new webpack.DllReferencePlugin({
+            manifest: require('../dist/dll/vue.manifest.json'), // 指定 json 文件
+            name: 'vue', // 注意与 DllPlugin 的 name 参数保持一致
+        }),
+        new webpack.DllReferencePlugin({
+            manifest: require('../dist/dll/ui.manifest.json'),
+            name: 'ui',
+        }),
         // 提取css
         new ExtractTextWebpackPlugin({
             filename: 'css/[name]-bundle-[hash:5].css',

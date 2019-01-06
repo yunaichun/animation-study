@@ -42,6 +42,10 @@
 import './css/base.less';
 import './css/common.less';
 import './css/components/a.less';
+/*六、打包性能优化-分离 vendor 和 app*/
+import Vue from 'vue';
+import { Button } from 'element-ui';
+Vue.component(Button);
 
 /*五、第三方插件注入*/
 $('div').addClass('new3');
