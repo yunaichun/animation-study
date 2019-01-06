@@ -135,7 +135,7 @@ const baseConfig = env => {
         ];
     return {
         entry: {
-            app: './src/app.js',
+            app: path.join(__dirname, '../src/app.js'),
             // app2: './src/app2.js',
             // vendor: ['lodash']
         },
