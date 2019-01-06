@@ -52,7 +52,8 @@ const baseConfig = env => {
                 loader: 'style-loader',
                 options: {
                     singleton: true,
-                    transform: './src/css/css.transform.js'
+                    transform: './src/css/css.transform.js',
+                    sourceMap: false
                 }
             },
             use: cssLoaders
@@ -136,6 +137,7 @@ const baseConfig = env => {
     return {
         entry: {
             app: path.join(__dirname, '../src/app.js'),
+            vendor: [path.resolve(__dirname, '../src/lib/jquery.min.js')]
             // app2: './src/app2.js',
             // vendor: ['lodash']
         },
@@ -143,7 +145,8 @@ const baseConfig = env => {
         output: {
             path: path.resolve(__dirname, '../dist'), // 打包文件存放路径
             publicPath: '/', // 动态打包的代码的路径：相对打包的根目录（也可以为线上绝对地址） 
-            filename: 'js/[name]-bundle-[hash:5].js', // 打包文件名称
+            // 利用 chunkhash 可以保证第三方代码的版本号不会因为业务代码的改变而改变
+            filename: 'js/[name]-bundle-[chunkhash:5].js', // 打包文件名称
             chunkFilename: '[name].chunk.js' // 异步 chunk（require.ensure、动态import）
         },
 
@@ -163,14 +166,14 @@ const baseConfig = env => {
                     include: path.resolve(__dirname, '../src'),
                     exclude: [
                         path.resolve(__dirname, '../src/lib'),
-                        '/node_modules/'
+                        path.resolve(__dirname, '../node_modules/')
                     ],
                 },
                 /*加载ts*/
                 {
                     test: /\.tsx?$/,
                     use: tsLoader,
-                    exclude: '/node_modules/'
+                    exclude: path.resolve(__dirname, '../node_modules/')
                 },
                 /*加载css、less*/
                 {
