@@ -1,5 +1,5 @@
 module.exports = {
-    '/.+': {
+    '/': {
         target: 'http://10.13.69.104:8287',
         changeOrigin: true,
         logLevel: 'debug', // 设置debug则为控制台打印代理请求信息

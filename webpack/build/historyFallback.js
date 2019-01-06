@@ -1,6 +1,6 @@
 module.exports = {
-    // 不然资源文件也全部会被重定向
-    acceptHeaders: ['text/html', 'application/xhtml+xml'],
+    // 否则资源文件 assets 也全部会被重定向
+    // acceptHeaders: ['text/html', 'application/xhtml+xml'],
     rewrites: [
         {
             from: '/index',

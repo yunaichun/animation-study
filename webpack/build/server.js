@@ -14,7 +14,7 @@ const compiler = webpack(config);
 
 const app = express();
 const port = 3000;
-console.log(111, config.output.publicPath);
+
 // webpack-dev-middleware
 app.use(webpackDevMiddleware(compiler, {
     publicPath: config.output.publicPath
