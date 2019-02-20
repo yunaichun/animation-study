@@ -1,0 +1,53 @@
+body {
+    padding: 16px;
+}
+
+.flexbox .left-right{
+    display: flex;
+    border: 1px solid #efefef;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 16px;
+    min-width: 440px;
+}
+
+.flexbox:hover{
+    background-color: #EDF5FE;
+}
+
+.flexbox .left {
+    width: 300px;
+    text-indent: 8px;
+}
+
+.flexbox .right {
+    flex: 1;
+}
+
+.flexbox .right .operate {
+    float: right;
+    margin-top: 2px;
+    margin-right: 4px;
+    border: 1px solid #efefef;
+    width: 60px;
+    height: 24px;
+    padding: 0 2px;
+}
+
+.flexbox .right .operate .add,.setup {
+    display: inline-block;
+    cursor: pointer; 
+    width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.flexbox .right .operate .add {
+    background-image: url('../img/add.svg');
+}
+
+.flexbox .right .operate .setup {
+    background-image: url('../img/setup.svg');
+}

@@ -1,0 +1,27 @@
+body {
+    padding: 16px;
+}
+
+ul {
+    list-style: none;
+}
+
+table, table tr td {
+    border: 1px solid #ebebeb;
+    width: 200px;
+    height: 186px;
+}
+
+table tr td:hover {
+    /*border: 1px solid #93b272;*/
+    /*题目给的 box-shadow 和视觉稿差距有点大，是不是标注错了啊*/
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 2px 3px 0 rgba(0, 0, 0, 0.03), 0 0 0 1px #E0E0E0;
+}
+
+table {
+    width: 600px;
+    min-height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border-collapse: collapse;
+}

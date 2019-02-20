@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>grid布局</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdn.bootcss.com/mustache.js/3.0.1/mustache.min.js"></script>
+</head>
+<body>
+    <section class="grid">
+      <article class="main">
+        <!-- 竖边栏：采用绝对定位（存在误差  - 文字底部对齐采用line-height） -->
+        <div class="row-1">Mon</div>
+        <div class="row-2">Wed</div>
+        <div class="row-3">Fri</div>
+        <!-- 表头：单元格合并 -->
+        <div class="item column-1">Jan</div>
+        <div class="item"></div>
+        <div class="item column-2">Feb</div>
+        <div class="item"></div>
+        <div class="item column-3">Mar</div>
+        <div class="item"></div>
+        <div class="item column-4">Apr</div>
+        <div class="item"></div>
+        <div class="item column-5">May</div>
+        <div class="item"></div>
+        <div class="item column-6">Jun</div>
+        <div class="item"></div>
+        <div class="item column-7">Jul</div>
+        <div class="item"></div>
+        <div class="item column-8">Aug</div>
+        <div class="item"></div>
+        <div class="item column-9">Sep</div>
+        <div class="item"></div>
+        <div class="item column-10">Oct</div>
+        <div class="item"></div>
+        <div class="item column-11">Nov</div>
+        <div class="item"></div>
+        <div class="item column-12">Dec</div>
+
+        <!-- 以下是未添加js代码时的静态页面 -->
+
+        <!-- 行与行的间隔 -->
+        <!-- <div class="line "></div> -->
+        <!-- 第一行主题内容：有颜色值的48列 + 列与列间隙48列 -->
+        <!--  
+        <div class="item">1</div>
+        <div class="item"></div>
+        <div class="item">2</div>
+        <div class="item"></div>
+        <div class="item">3</div>
+        <div class="item"></div>
+        <div class="item">4</div>
+        <div class="item"></div>
+        <div class="item">5</div>
+        <div class="item"></div>
+        <div class="item">6</div>
+        <div class="item"></div>
+        <div class="item">7</div>
+        <div class="item"></div>
+        <div class="item">8</div>
+        <div class="item"></div>
+        <div class="item">9</div>
+        <div class="item"></div>
+        <div class="item">10</div>
+        <div class="item"></div>
+        <div class="item">11</div>
+        <div class="item"></div>
+        <div class="item">12</div>
+        <div class="item"></div>
+        <div class="item">13</div>
+        <div class="item"></div>
+        <div class="item">14</div>
+        <div class="item"></div>
+        <div class="item">15</div>
+        <div class="item"></div>
+        <div class="item">16</div>
+        <div class="item"></div>
+        <div class="item">17</div>
+        <div class="item"></div>
+        <div class="item">18</div>
+        <div class="item"></div>
+        <div class="item">19</div>
+        <div class="item"></div>
+        <div class="item">20</div>
+        <div class="item"></div>
+        <div class="item">21</div>
+        <div class="item"></div>
+        <div class="item">22</div>
+        <div class="item"></div>
+        <div class="item">23</div>
+        <div class="item"></div>
+        <div class="item">24</div>
+        <div class="item"></div>
+        <div class="item">25</div>
+        <div class="item"></div>
+        <div class="item">26</div>
+        <div class="item"></div>
+        <div class="item">27</div>
+        <div class="item"></div>
+        <div class="item">28</div>
+        <div class="item"></div>
+        <div class="item">29</div>
+        <div class="item"></div>
+        <div class="item">30</div>
+        <div class="item"></div>
+        <div class="item">31</div>
+        <div class="item"></div>
+        <div class="item">32</div>
+        <div class="item"></div>
+        <div class="item">33</div>
+        <div class="item"></div>
+        <div class="item">34</div>
+        <div class="item"></div>
+        <div class="item">35</div>
+        <div class="item"></div>
+        <div class="item">36</div>
+        <div class="item"></div>
+        <div class="item">37</div>
+        <div class="item"></div>
+        <div class="item">38</div>
+        <div class="item"></div>
+        <div class="item">39</div>
+        <div class="item"></div>
+        <div class="item">40</div>
+        <div class="item"></div>
+        <div class="item">41</div>
+        <div class="item"></div>
+        <div class="item">42</div>
+        <div class="item"></div>
+        <div class="item">43</div>
+        <div class="item"></div>
+        <div class="item">44</div>
+        <div class="item"></div>
+        <div class="item">45</div>
+        <div class="item"></div>
+        <div class="item">46</div>
+        <div class="item"></div>
+        <div class="item">47</div>
+        <div class="item"></div>
+        <div class="item">48</div>
+        <div class="item"></div>
+        -->
+      </article>
+    </section>
+    <script src="js/main.js"></script>
+</body>
+</html>
