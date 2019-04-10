@@ -1,6 +1,6 @@
 # 简介
 
-此仓库主要是记录下自己学习页面可视化效果方面的相关知识，方便以后忘记可以从学习轨迹中迅速上手。
+此仓库主要是记录下自己学习页面可视化效果方面的相关知识，以及一些其他零散的工程，方便以后忘记可以从学习轨迹中迅速上手。
 
 
 ### 仓库目前分为六个部分
@@ -10,5 +10,6 @@
 - Layout：flex布局、table布局、rem布局、grid布局练习
 - Three.js：学习Three.js
 - webpack：学习webpack
+- yunaichun.github.io：[我的网站](https://yunaichun.github.io/)
 
 未完待续。
