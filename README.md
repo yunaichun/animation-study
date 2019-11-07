@@ -4,11 +4,11 @@
 
 
 ### 仓库目前分为六个部分
-- Canvas：组件化编写
-- CSS-Rem：页面响应式方案rem
-- Echarts：动态散点图EffectScatter地图坐标系、直角坐标系渲染
-- Layout：flex布局、table布局、rem布局、grid布局练习
-- Three.js：学习Three.js
+- CSS-Rem：页面响应式方案 rem
+- Layout：flex 布局、table 布局、rem 布局、grid 布局练习
+- Echarts：动态散点图 EffectScatter 地图坐标系、直角坐标系渲染
+- Canvas：学习 Canvas
+- Three.js：学习 Three.js
 
 
 未完待续。
